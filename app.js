@@ -66,7 +66,6 @@
 
 
   // ---------- illustrations (simple line icons) ----------
-  var FULL_NAME = 'PRANIBHA MAHESHWARI';
   var ICONS = {
     pen: '<path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',
     megaphone: '<path d="M3 11v2a1 1 0 001 1h2l5 4V6L6 10H4a1 1 0 00-1 1z"/><path d="M15 9a4 4 0 010 6M18 6a8 8 0 010 12"/>',
@@ -294,16 +293,20 @@
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) { playIntro(id); return; }
     $('profiles').classList.add('picked'); btn.classList.add('chosen');
-    setTimeout(function () { playIntro(id); }, 850);
+    setTimeout(function () { playIntro(id); }, 550);
   }
   var introTimer = null;
   function playIntro(id) {
     var intro = $('intro'), word = $('introWord');
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    archify(word, FULL_NAME, true);
+    archify(word, 'PM', true, 'Pranibha Maheshwari');
     $('profiles').hidden = true;
     intro.classList.remove('out', 'play'); intro.hidden = false;
     document.body.style.overflow = 'hidden';
+    // zoom target: the inside (counter) of the P
+    var pl = word.querySelector('.l'), wr = word.getBoundingClientRect(), pr = pl.getBoundingClientRect();
+    word.style.setProperty('--ox', (pr.left - wr.left + pr.width * 0.36) + 'px');
+    word.style.setProperty('--oy', (pr.top - wr.top + pr.height * 0.14) + 'px');
     void intro.offsetWidth; intro.classList.add('play');
     var done = false;
     function finish() {
@@ -311,10 +314,10 @@
       document.removeEventListener('keydown', finish); intro.removeEventListener('click', finish);
       chooseProfile(id); picking = false;
       intro.classList.add('out');
-      setTimeout(function () { intro.hidden = true; document.body.style.overflow = ''; }, reduce ? 200 : 450);
+      setTimeout(function () { intro.hidden = true; document.body.style.overflow = ''; }, reduce ? 200 : 350);
     }
     document.addEventListener('keydown', finish); intro.addEventListener('click', finish);
-    introTimer = setTimeout(finish, reduce ? 600 : 2450);
+    introTimer = setTimeout(finish, reduce ? 600 : 1650);
   }
   function showPicker() {
     $('profiles').classList.remove('picked');
