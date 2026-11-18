@@ -30,7 +30,6 @@
     { name: 'Tools & analysis', list: ['Google Analytics', 'Customer Relationship Management (CRM)', 'Microsoft Excel', 'Analytical Skills', 'Research', 'Academic Journals'] },
     { name: 'Working style', list: ['Teamwork', 'Leadership', 'Problem Solving', 'Education', 'English'] }
   ];
-  var skillGrads = ['linear-gradient(135deg,#333,#111)', 'linear-gradient(135deg,#3a3a3a,#161616)'];
 
   var services = [
     { id: 'seo', title: 'SEO content writing', g: 'linear-gradient(135deg,#e50914,#7a0a10)',
@@ -65,6 +64,73 @@
       order: ['experience', 'skills', 'education'] }
   ];
 
+
+  // ---------- illustrations (simple line icons) ----------
+  var FULL_NAME = 'PRANIBHA MAHESHWARI';
+  var ICONS = {
+    pen: '<path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/>',
+    megaphone: '<path d="M3 11v2a1 1 0 001 1h2l5 4V6L6 10H4a1 1 0 00-1 1z"/><path d="M15 9a4 4 0 010 6M18 6a8 8 0 010 12"/>',
+    chart: '<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+    users: '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/>',
+    cap: '<path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5"/>',
+    flask: '<path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 001.3 2h12.4a1.5 1.5 0 001.3-2L14 9V3"/><path d="M7.5 15h9"/>',
+    book: '<path d="M4 19.5A2.5 2.5 0 016.5 17H20V3H6.5A2.5 2.5 0 004 5.5z"/><path d="M4 19.5A2.5 2.5 0 006.5 22H20v-5"/>',
+    heart: '<path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/>',
+    share: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>',
+    target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+    sheet: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>',
+    globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20z"/>',
+    bulb: '<path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/>',
+    store: '<path d="M3 9l1-5h16l1 5M3 9v11h18V9"/><path d="M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0"/>',
+    briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V4h8v3M3 13h18"/>',
+    star: '<path d="M12 2l3 7 7 .5-5.5 4.7L18 22l-6-4-6 4 1.5-7.8L2 9.5 9 9z"/>',
+    chat: '<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>',
+    leaf: '<path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.5 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5-6"/>',
+    trend: '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>'
+  };
+  var ICON_FOR = {
+    masai: 'megaphone', ewards: 'target', zoutons: 'search', teachief: 'book', cdri: 'flask',
+    banasthali: 'flask', vivekananda: 'leaf',
+    seo: 'search', copy: 'pen', social: 'share', b2b: 'briefcase', research: 'flask',
+    'Copywriting': 'pen', 'Web Content Writing': 'globe', 'Digital Marketing': 'trend', 'Social Media Marketing': 'share',
+    'Advertising': 'megaphone', 'Strategic Marketing': 'target', 'B2B Marketing Strategy': 'briefcase', 'Retail Marketing': 'store', 'Marketing': 'megaphone',
+    'Google Analytics': 'chart', 'Customer Relationship Management (CRM)': 'heart', 'Microsoft Excel': 'sheet', 'Analytical Skills': 'chart', 'Research': 'flask', 'Academic Journals': 'book',
+    'Teamwork': 'users', 'Leadership': 'star', 'Problem Solving': 'bulb', 'Education': 'cap', 'English': 'chat'
+  };
+  function iconSvg(key, cls) {
+    return '<svg class="' + (cls || 'art') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[ICON_FOR[key]] || ICONS.pen) + '</svg>';
+  }
+  var skillGradSets = [
+    ['linear-gradient(135deg,#e50914,#6b0a10)', 'linear-gradient(135deg,#ff6a3d,#8a2410)', 'linear-gradient(135deg,#d81b60,#560a2b)'],
+    ['linear-gradient(135deg,#2f80ed,#0a2f66)', 'linear-gradient(135deg,#00a3c4,#04384a)', 'linear-gradient(135deg,#5b5bd6,#1d1d5c)'],
+    ['linear-gradient(135deg,#1f9d6b,#0b3d2c)', 'linear-gradient(135deg,#d4a017,#6b4a00)', 'linear-gradient(135deg,#7cb518,#2e4a07)']
+  ];
+  function skillGrad(name) {
+    for (var gi = 0; gi < skillGroups.length; gi++) {
+      var ix = skillGroups[gi].list.indexOf(name);
+      if (ix > -1) return skillGradSets[gi][ix % 3];
+    }
+    return skillGradSets[0][0];
+  }
+
+  // ---------- arched wordmark ----------
+  function archify(el, text, wrap, label) {
+    el.setAttribute('aria-label', label || text);
+    el.innerHTML = '';
+    var n = text.length;
+    text.split('').forEach(function (ch, i) {
+      var t = n > 1 ? (i / (n - 1)) * 2 - 1 : 0;
+      var a = document.createElement('span');
+      a.className = 'a'; a.setAttribute('aria-hidden', 'true');
+      a.style.setProperty('--y', (-(1 - t * t) * 0.09).toFixed(3) + 'em');
+      a.style.setProperty('--r', (t * 3).toFixed(2) + 'deg');
+      if (ch === ' ') a.classList.add('sp'); else a.textContent = ch;
+      if (wrap) { var l = document.createElement('span'); l.className = 'l'; l.style.setProperty('--i', i); l.appendChild(a); el.appendChild(l); }
+      else el.appendChild(a);
+    });
+  }
+
   var $ = function (id) { return document.getElementById(id); };
   var store = { get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
                 set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
@@ -80,20 +146,20 @@
     b.dataset.kind = kind; b.dataset.id = item.id || item;
     if (kind === 'skill') {
       b.className = 'card skill';
-      b.style.setProperty('--bg-g', skillGrads[skillIndex(item) % 2]);
-      b.innerHTML = '<span class="ct">' + esc(item) + '</span>';
+      b.style.setProperty('--bg-g', skillGrad(item));
+      b.innerHTML = iconSvg(item) + '<span class="ct">' + esc(item) + '</span>';
       var n = rolesFor(item).length;
       if (n) b.innerHTML += '<span class="cs">Used in ' + n + (n === 1 ? ' role' : ' roles') + '</span>';
       b.setAttribute('aria-label', item);
     } else if (kind === 'svc') {
       b.className = 'card';
       b.style.setProperty('--bg-g', item.g);
-      b.innerHTML = '<span class="ct">' + esc(item.title) + '</span><span class="cs">Type of work</span>';
+      b.innerHTML = iconSvg(item.id) + '<span class="ct">' + esc(item.title) + '</span><span class="cs">Type of work</span>';
     } else {
       b.className = 'card';
       b.style.setProperty('--bg-g', item.g);
       b.innerHTML = (item.now ? '<span class="badge">NOW PLAYING</span>' : '') +
-        (kind === 'exp' ? '<span class="big">' + (i + 1) + '</span>' : '') +
+        iconSvg(item.id) +
         '<span class="ct">' + esc(item.title) + '</span><span class="cs">' + esc(item.org) + '</span>';
     }
     return b;
@@ -136,7 +202,7 @@
       btns = '<a class="btn play" href="' + LINKEDIN + '" target="_blank" rel="noopener">Message on LinkedIn</a>';
     } else if (kind === 'skill') {
       var roles = rolesFor(id);
-      g = skillGrads[skillIndex(id) % 2]; title = id;
+      g = skillGrad(id); title = id;
       meta = '<span class="match">Skill</span>';
       desc = roles.length ? 'Pranibha has used this skill in ' + roles.length + (roles.length === 1 ? ' role.' : ' roles.') : 'Listed on Pranibha\'s LinkedIn profile.';
       tagsLabel = roles.length ? 'Where it shows up' : '';
@@ -154,7 +220,7 @@
       if (it.url) btns = '<a class="btn play" href="' + it.url + '" target="_blank" rel="noopener">View on LinkedIn</a>';
     }
     art.style.setProperty('--bg-g', g);
-    $('mArt').innerHTML = '<span>' + esc(title) + '</span>';
+    $('mArt').innerHTML = iconSvg(id, 'm-icon') + '<span>' + esc(title) + '</span>';
     $('mTitle').textContent = title;
     $('mMeta').innerHTML = meta;
     $('mDesc').textContent = desc;
@@ -226,10 +292,7 @@
   function playIntro(id) {
     var intro = $('intro'), word = $('introWord');
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    word.innerHTML = '';
-    'PRANIBHA MAHESHWARI'.split('').forEach(function (ch, i) {
-      var sp = document.createElement('span'); sp.className = 'l'; sp.style.setProperty('--i', i); sp.textContent = ch; word.appendChild(sp);
-    });
+    archify(word, FULL_NAME, true);
     $('profiles').hidden = true;
     intro.classList.remove('out', 'play'); intro.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -251,6 +314,7 @@
   }
 
   // ---------- wire up ----------
+  Array.prototype.forEach.call(document.querySelectorAll('.wordmark'), function (el) { archify(el, 'PM', false, 'Pranibha Maheshwari'); });
   renderProfilePicker();
   $('profiles').hidden = false;
 
