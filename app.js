@@ -207,7 +207,7 @@
       var li = document.createElement('li'), b = document.createElement('button');
       b.type = 'button';
       b.innerHTML = '<span class="face" style="--c:' + p.color + '"></span><span class="pname">' + p.name + '</span><span class="psub">' + p.sub + '</span>';
-      b.addEventListener('click', function () { chooseProfile(p.id); });
+      b.addEventListener('click', function () { playIntro(p.id); });
       li.appendChild(b); ul.appendChild(li);
     });
   }
@@ -222,6 +222,29 @@
     buildRows(p);
     $('searchInput').value = ''; runSearch('');
     window.scrollTo({ top: 0 });
+  }
+  var introTimer = null;
+  function playIntro(id) {
+    var intro = $('intro'), word = $('introWord');
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    word.innerHTML = '';
+    'PRANIBHA'.split('').forEach(function (ch, i) {
+      var sp = document.createElement('span'); sp.className = 'l'; sp.style.setProperty('--i', i); sp.textContent = ch; word.appendChild(sp);
+    });
+    $('profiles').hidden = true;
+    intro.classList.remove('out', 'play'); intro.hidden = false;
+    document.body.style.overflow = 'hidden';
+    void intro.offsetWidth; intro.classList.add('play');
+    var done = false;
+    function finish() {
+      if (done) return; done = true; clearTimeout(introTimer);
+      document.removeEventListener('keydown', finish); intro.removeEventListener('click', finish);
+      chooseProfile(id);
+      intro.classList.add('out');
+      setTimeout(function () { intro.hidden = true; document.body.style.overflow = ''; }, reduce ? 200 : 450);
+    }
+    document.addEventListener('keydown', finish); intro.addEventListener('click', finish);
+    introTimer = setTimeout(finish, reduce ? 600 : 2450);
   }
   function showPicker() {
     $('app').hidden = true; $('profiles').hidden = false;

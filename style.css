@@ -98,3 +98,20 @@ footer{padding:28px max(16px,4vw) 40px;color:#777;font-size:.8rem;border-top:1px
 
 @media (max-width:760px){.links{display:none}.hero{min-height:78vh;padding-bottom:64px}.btn{padding:9px 18px;font-size:1rem}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+/* intro animation */
+.intro{position:fixed;inset:0;z-index:60;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .45s}
+.intro.out{opacity:0}
+.word{display:flex;font-weight:900;color:var(--red);font-size:clamp(2.2rem,11vw,7rem);letter-spacing:.06em;line-height:1;text-shadow:0 0 40px rgba(229,9,20,.55);transform-origin:50% 50%}
+.word .l{display:inline-block;opacity:0}
+.rays{position:absolute;inset:0;opacity:0;background:
+ repeating-linear-gradient(90deg,transparent 0 5.2%,rgba(229,9,20,.0) 5.2% 5.6%,rgba(229,9,20,.35) 5.6% 6.2%,rgba(255,80,60,.0) 6.2% 9%),
+ radial-gradient(ellipse 50% 40% at 50% 50%,rgba(229,9,20,.35),transparent 70%);
+ filter:blur(6px);mix-blend-mode:screen}
+.intro.play .l{animation:letterIn .55s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*75ms)}
+.intro.play .rays{animation:rays 2.3s ease-in-out .3s forwards}
+.intro.play .word{animation:zoom .9s cubic-bezier(.6,0,.9,.4) 1.55s forwards}
+@keyframes letterIn{from{opacity:0;transform:translateY(24px) scale(.6);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes rays{0%{opacity:0;transform:scaleY(.6)}40%{opacity:.9}100%{opacity:0;transform:scaleY(1.4)}}
+@keyframes zoom{from{transform:scale(1);opacity:1}to{transform:scale(7);opacity:0}}
+@media (prefers-reduced-motion:reduce){.intro.play .l{animation:none;opacity:1}.intro.play .rays,.intro.play .word{animation:none}.intro{transition:opacity .2s}}
