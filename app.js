@@ -51,18 +51,18 @@
   ];
 
   var profiles = [
-    { id: 'recruiter', name: 'Recruiter', sub: 'Skimming fast', color: '#e50914',
-      tag: 'Open to roles', playLabel: 'View LinkedIn',
-      desc: 'Senior Content Marketer at Masai. Five roles across content, SEO, CRM and research, with a science background. The skills rows are the quick version.',
-      order: ['skills', 'experience', 'education'] },
-    { id: 'manager', name: 'Hiring Manager', sub: 'Hiring for a role', color: '#2f80ed',
+    { id: 'hiring', name: 'Hiring Team', sub: 'Recruiters & managers', color: '#e50914',
       tag: 'Open to roles', playLabel: 'Contact on LinkedIn',
-      desc: 'Started in biotechnology research, moved into SEO writing, then marketing, and now leads content at Masai. Open any role in the career journey for details.',
+      desc: 'Senior Content Marketer at Masai. Started in biotechnology research, moved into SEO writing, then marketing, with five roles across content, SEO, CRM and research. Open any role for details.',
       order: ['experience', 'skills', 'education'] },
-    { id: 'client', name: 'Client', sub: 'Got a project?', color: '#f2b705',
-      tag: 'Get in touch', playLabel: 'Say hello on LinkedIn',
-      desc: 'Working on something that needs content? Pranibha is a full-time content marketer at Masai. Here is the kind of work she does. If it fits, say hello on LinkedIn.',
-      order: ['services', 'experience', 'skills', 'education'] }
+    { id: 'client', name: 'Client', sub: 'Freelance services', color: '#f2b705',
+      tag: 'Freelance enquiries', playLabel: 'Message on LinkedIn',
+      desc: 'Looking for freelance content? Pranibha writes SEO articles, copy, social content and research-backed pieces. See the type of work she does, then message her on LinkedIn.',
+      order: ['services', 'experience', 'skills', 'education'] },
+    { id: 'guest', name: 'Just Browsing', sub: 'Having a look around', color: '#27ae60',
+      tag: 'Welcome', playLabel: 'View LinkedIn',
+      desc: 'Pranibha Maheshwari is a content marketer at Masai. Browse her experience, skills and education, or use the search bar to look for something specific.',
+      order: ['experience', 'skills', 'education'] }
   ];
 
   var $ = function (id) { return document.getElementById(id); };
@@ -212,7 +212,7 @@
     });
   }
   function chooseProfile(id) {
-    var p = profiles.filter(function (x) { return x.id === id; })[0] || profiles[1];
+    var p = profiles.filter(function (x) { return x.id === id; })[0] || profiles[2];
     store.set('profile', p.id);
     $('profiles').hidden = true; $('app').hidden = false;
     $('navFace').style.setProperty('--c', p.color);
