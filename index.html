@@ -4,130 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pranibha Maheshwari | Content Marketer</title>
-<meta name="description" content="Pranibha Maheshwari is a Senior Content Marketer at Masai with experience in copywriting, SEO content, B2B marketing and CRM.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<meta name="description" content="Portfolio of Pranibha Maheshwari, Senior Content Marketer at Masai. Pick a profile and browse her experience, skills and education.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <a class="brand" href="#top">Pranibha Maheshwari</a>
-    <nav aria-label="Sections">
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
+
+<!-- Profile picker -->
+<div id="profiles" class="profiles" hidden>
+  <div class="wordmark big">PRANIBHA</div>
+  <h1>Who's watching?</h1>
+  <ul class="profile-list" id="profileList"></ul>
+  <p class="hint">Pick a profile to see the portfolio your way.</p>
+</div>
+
+<!-- Browse -->
+<div id="app" hidden>
+  <header class="nav" id="nav">
+    <div class="nav-left">
+      <a class="wordmark" href="#home" id="logo">PRANIBHA</a>
+      <nav class="links" aria-label="Sections">
+        <a href="#home">Home</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <div class="search" id="search">
+        <button id="searchBtn" type="button" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+        </button>
+        <input id="searchInput" type="search" placeholder="Titles, skills, companies" autocomplete="off" aria-label="Search portfolio">
+      </div>
+      <button id="switchProfile" class="avatar-btn" type="button" aria-label="Switch profile"><span class="face sm" id="navFace"></span></button>
+    </div>
   </header>
 
-  <main id="top">
-    <div class="hero">
-      <p class="eyebrow">Content marketer</p>
-      <h1>Content that gets found, read and acted on.</h1>
-      <p class="lede">I'm a Senior Content Marketer at Masai. I've worked across SEO writing, social media, B2B and retail marketing, and CRM, after starting my career in biotechnology research.</p>
-      <div class="btns">
-        <a class="btn" href="https://www.linkedin.com/in/pranibha-maheshwari-6314421bb/" target="_blank" rel="noopener">View LinkedIn</a>
-        <a class="btn alt" href="#experience">See experience</a>
-      </div>
-    </div>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <ol class="timeline">
-        <li>
-          <div class="when">Sep 2025 – Present<br><span>1 yr 3 mos</span></div>
-          <div>
-            <h3>Senior Content Marketer</h3>
-            <p class="org"><a href="https://www.linkedin.com/school/14593111/" target="_blank" rel="noopener">Masai</a> · Full-time · On-site</p>
-            <ul class="tags"><li>Copywriting</li><li>Digital Marketing</li><li>Advertising</li><li>Analytical Skills</li><li>Social Media Marketing</li></ul>
-          </div>
-        </li>
-        <li>
-          <div class="when">Sep 2024 – Aug 2025<br><span>1 yr</span></div>
-          <div>
-            <h3>Marketing Executive</h3>
-            <p class="org"><a href="https://www.linkedin.com/company/12905082/" target="_blank" rel="noopener">eWards</a> · Full-time · Kolkata</p>
-            <ul class="tags"><li>Social Media Marketing</li><li>CRM</li><li>Strategic Marketing</li><li>B2B Marketing Strategy</li><li>Retail Marketing</li></ul>
-          </div>
-        </li>
-        <li>
-          <div class="when">Jan 2024 – Sep 2024<br><span>9 mos</span></div>
-          <div>
-            <h3>SEO Content Writer</h3>
-            <p class="org">Zoutons.com · Full-time · India · Hybrid</p>
-            <ul class="tags"><li>Digital Marketing</li><li>Web Content Writing</li><li>Google Analytics</li><li>Teamwork</li></ul>
-          </div>
-        </li>
-        <li>
-          <div class="when">Dec 2022 – Jan 2024<br><span>1 yr 2 mos</span></div>
-          <div>
-            <h3>Junior Research Associate</h3>
-            <p class="org"><a href="https://www.linkedin.com/company/78471669/" target="_blank" rel="noopener">The Teachief Academy</a> · Full-time · Remote</p>
-            <ul class="tags"><li>Academic Journals</li><li>Teamwork</li></ul>
-          </div>
-        </li>
-        <li>
-          <div class="when">Mar 2022 – Jun 2022<br><span>4 mos</span></div>
-          <div>
-            <h3>Project Assistant</h3>
-            <p class="org">Central Drug Research Institute, Lucknow · Full-time</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skillgrid">
-        <div>
-          <h3>Content &amp; marketing</h3>
-          <ul class="tags"><li>Copywriting</li><li>Web Content Writing</li><li>Digital Marketing</li><li>Social Media Marketing</li><li>Advertising</li><li>Strategic Marketing</li><li>B2B Marketing Strategy</li><li>Retail Marketing</li><li>Marketing</li></ul>
-        </div>
-        <div>
-          <h3>Tools &amp; analysis</h3>
-          <ul class="tags"><li>Google Analytics</li><li>Customer Relationship Management (CRM)</li><li>Microsoft Excel</li><li>Analytical Skills</li><li>Research</li><li>Academic Journals</li></ul>
-        </div>
-        <div>
-          <h3>Working style</h3>
-          <ul class="tags"><li>Teamwork</li><li>Leadership</li><li>Problem Solving</li><li>Education</li></ul>
-        </div>
-        <div>
-          <h3>Languages</h3>
-          <ul class="tags"><li>English</li></ul>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="series"><span class="n">P</span> PORTFOLIO</p>
+        <h2 id="heroTitle">Pranibha Maheshwari</h2>
+        <p class="meta"><span class="match">Open to conversations</span><span>2026</span><span class="rating">Content Marketer</span><span>5 roles</span></p>
+        <p class="desc" id="heroDesc"></p>
+        <div class="btns">
+          <a class="btn play" href="https://www.linkedin.com/in/pranibha-maheshwari-6314421bb/" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg> Play on LinkedIn</a>
+          <button class="btn info" type="button" id="heroInfo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5" stroke-linecap="round"/></svg> More info</button>
         </div>
       </div>
     </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <ol class="timeline">
-        <li>
-          <div class="when">2018 – 2020</div>
-          <div>
-            <h3>Master's degree, Biotechnology</h3>
-            <p class="org"><a href="https://www.linkedin.com/school/15095083/" target="_blank" rel="noopener">Banasthali Vidyapith</a></p>
-          </div>
-        </li>
-        <li>
-          <div class="when">Jul 2015 – Jun 2018</div>
-          <div>
-            <h3>B.Sc., Zoology</h3>
-            <p class="org">Vivekananda College, University of Calcutta</p>
-          </div>
-        </li>
-      </ol>
+    <div id="rows" class="rows"></div>
+
+    <section id="results" class="results" hidden>
+      <h3 id="resultsTitle"></h3>
+      <div class="grid" id="resultsGrid"></div>
     </section>
 
-    <section id="contact">
-      <h2>Get in touch</h2>
-      <p>The best way to reach me is on LinkedIn.</p>
-      <a class="big" href="https://www.linkedin.com/in/pranibha-maheshwari-6314421bb/" target="_blank" rel="noopener">linkedin.com/in/pranibha-maheshwari</a>
+    <section id="contact" class="contact">
+      <h3>Contact</h3>
+      <p>The best way to reach Pranibha is on LinkedIn.</p>
+      <a class="btn play" href="https://www.linkedin.com/in/pranibha-maheshwari-6314421bb/" target="_blank" rel="noopener">linkedin.com/in/pranibha-maheshwari</a>
     </section>
   </main>
 
-  <footer>© 2026 Pranibha Maheshwari</footer>
+  <footer>© 2026 Pranibha Maheshwari · A portfolio styled like a streaming service. Not affiliated with any streaming company.</footer>
 </div>
+
+<!-- Detail modal -->
+<div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="sheet">
+    <button class="close" id="mClose" type="button" aria-label="Close">×</button>
+    <div class="m-art" id="mArt"></div>
+    <div class="m-body">
+      <h2 id="mTitle"></h2>
+      <p class="meta" id="mMeta"></p>
+      <p class="desc" id="mDesc"></p>
+      <h4 id="mTagsLabel"></h4>
+      <ul class="tags" id="mTags"></ul>
+      <div class="btns" id="mBtns"></div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
