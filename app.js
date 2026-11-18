@@ -52,16 +52,16 @@
 
   var profiles = [
     { id: 'recruiter', name: 'Recruiter', sub: 'Skimming fast', color: '#e50914',
-      tag: 'Quick view', playLabel: 'View LinkedIn',
+      tag: 'Open to roles', playLabel: 'View LinkedIn',
       desc: 'Senior Content Marketer at Masai. Five roles across content, SEO, CRM and research, with a science background. The skills rows are the quick version.',
       order: ['skills', 'experience', 'education'] },
     { id: 'manager', name: 'Hiring Manager', sub: 'Hiring for a role', color: '#2f80ed',
-      tag: 'Full story', playLabel: 'Contact on LinkedIn',
+      tag: 'Open to roles', playLabel: 'Contact on LinkedIn',
       desc: 'Started in biotechnology research, moved into SEO writing, then marketing, and now leads content at Masai. Open any role in the career journey for details.',
       order: ['experience', 'skills', 'education'] },
-    { id: 'client', name: 'Client', sub: 'One-off project', color: '#f2b705',
-      tag: 'Let\u2019s talk', playLabel: 'Start a project on LinkedIn',
-      desc: 'Need content for a project? Pranibha writes SEO articles, copy, social content and research-backed pieces. See what she can help with, then message her on LinkedIn.',
+    { id: 'client', name: 'Client', sub: 'Got a project?', color: '#f2b705',
+      tag: 'Get in touch', playLabel: 'Say hello on LinkedIn',
+      desc: 'Working on something that needs content? Pranibha is a full-time content marketer at Masai. Here is the kind of work she does. If it fits, say hello on LinkedIn.',
       order: ['services', 'experience', 'skills', 'education'] }
   ];
 
@@ -88,7 +88,7 @@
     } else if (kind === 'svc') {
       b.className = 'card';
       b.style.setProperty('--bg-g', item.g);
-      b.innerHTML = '<span class="ct">' + esc(item.title) + '</span><span class="cs">What I can help with</span>';
+      b.innerHTML = '<span class="ct">' + esc(item.title) + '</span><span class="cs">Type of work</span>';
     } else {
       b.className = 'card';
       b.style.setProperty('--bg-g', item.g);
@@ -116,7 +116,7 @@
         skillGroups.forEach(function (g, i) { var r = row(g.name, 'skill', g.list); if (i === 0) r.id = 'skills'; wrap.appendChild(r); });
       },
       education: function () { wrap.appendChild(row('Education', 'edu', education)); },
-      services: function () { var r = row('How I can help on your project', 'svc', services); r.id = 'services'; wrap.appendChild(r); }
+      services: function () { var r = row('What Pranibha does', 'svc', services); r.id = 'services'; wrap.appendChild(r); }
     };
     profile.order.forEach(function (k) { blocks[k](); });
   }
@@ -128,12 +128,12 @@
     if (kind === 'svc') {
       var sv = services.filter(function (x) { return x.id === id; })[0];
       g = sv.g; title = sv.title;
-      meta = '<span class="match">What I can help with</span>';
+      meta = '<span class="match">Type of work</span>';
       desc = sv.desc;
-      tagsLabel = 'Experience behind it';
+      tagsLabel = 'Where it comes from';
       tags = sv.roles.map(function (r) { var e = experience.filter(function (x) { return x.id === r; })[0]; return { label: e.title + ' · ' + e.org, kind: 'exp', id: r }; })
         .concat(sv.skills.map(function (k) { return { label: k, kind: 'skill', id: k }; }));
-      btns = '<a class="btn play" href="' + LINKEDIN + '" target="_blank" rel="noopener">Discuss this on LinkedIn</a>';
+      btns = '<a class="btn play" href="' + LINKEDIN + '" target="_blank" rel="noopener">Message on LinkedIn</a>';
     } else if (kind === 'skill') {
       var roles = rolesFor(id);
       g = skillGrads[skillIndex(id) % 2]; title = id;
