@@ -213,7 +213,6 @@
   }
   function chooseProfile(id) {
     var p = profiles.filter(function (x) { return x.id === id; })[0] || profiles[2];
-    store.set('profile', p.id);
     $('profiles').hidden = true; $('app').hidden = false;
     $('navFace').style.setProperty('--c', p.color);
     $('heroDesc').textContent = p.desc;
@@ -228,7 +227,7 @@
     var intro = $('intro'), word = $('introWord');
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     word.innerHTML = '';
-    'PRANIBHA'.split('').forEach(function (ch, i) {
+    'PRANIBHA MAHESHWARI'.split('').forEach(function (ch, i) {
       var sp = document.createElement('span'); sp.className = 'l'; sp.style.setProperty('--i', i); sp.textContent = ch; word.appendChild(sp);
     });
     $('profiles').hidden = true;
@@ -253,8 +252,7 @@
 
   // ---------- wire up ----------
   renderProfilePicker();
-  var saved = store.get('profile');
-  if (saved) chooseProfile(saved); else $('profiles').hidden = false;
+  $('profiles').hidden = false;
 
   $('switchProfile').addEventListener('click', showPicker);
   $('logo').addEventListener('click', function () { $('searchInput').value = ''; runSearch(''); });
