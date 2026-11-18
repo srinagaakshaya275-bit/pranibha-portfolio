@@ -120,13 +120,7 @@ footer{padding:28px max(16px,4vw) 40px;color:#777;font-size:.8rem;border-top:1px
 .a{display:inline-block;transform:translateY(var(--y,0)) rotate(var(--r,0));transform-origin:50% 100%}
 .a.sp{width:.3em}
 .word .l{display:inline-block}
-/* hero photo */
-.hero{position:relative;overflow:hidden}
-.hero-photo{position:absolute;right:0;top:0;height:100%;width:min(56%,760px);object-fit:cover;object-position:50% 22%;z-index:0;
- -webkit-mask-image:linear-gradient(to right,transparent 0,#000 48%),linear-gradient(to top,transparent 0,#000 22%);
- -webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 48%),linear-gradient(to top,transparent 0,#000 22%);mask-composite:intersect;filter:saturate(1.05) contrast(1.02)}
-.hero-copy{position:relative;z-index:1}
-@media (max-width:760px){.hero{min-height:0;padding-top:min(82vw,380px)}.hero-photo{width:100%;height:calc(min(82vw,380px) + 70px);opacity:1;object-position:50% 20%;-webkit-mask-image:linear-gradient(to top,transparent 0,#000 45%);mask-image:linear-gradient(to top,transparent 0,#000 45%);-webkit-mask-composite:source-over;mask-composite:add}}
+.hero-copy{position:relative}
 /* card illustrations */
 .art{position:absolute;right:12px;top:10px;width:58px;height:58px;color:#fff;opacity:.95;filter:drop-shadow(0 3px 8px rgba(0,0,0,.35));transition:transform .25s}
 .card::before{content:"";position:absolute;right:-30px;top:-34px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.12)}
