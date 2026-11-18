@@ -273,7 +273,7 @@
       var li = document.createElement('li'), b = document.createElement('button');
       b.type = 'button';
       b.innerHTML = '<span class="face" style="--c:' + p.color + '"></span><span class="pname">' + p.name + '</span><span class="psub">' + p.sub + '</span>';
-      b.addEventListener('click', function () { playIntro(p.id); });
+      b.addEventListener('click', function () { pickThen(b, p.id); });
       li.appendChild(b); ul.appendChild(li);
     });
   }
@@ -288,6 +288,14 @@
     $('searchInput').value = ''; runSearch('');
     window.scrollTo({ top: 0 });
   }
+  var picking = false;
+  function pickThen(btn, id) {
+    if (picking) return; picking = true;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { playIntro(id); return; }
+    $('profiles').classList.add('picked'); btn.classList.add('chosen');
+    setTimeout(function () { playIntro(id); }, 850);
+  }
   var introTimer = null;
   function playIntro(id) {
     var intro = $('intro'), word = $('introWord');
@@ -301,7 +309,7 @@
     function finish() {
       if (done) return; done = true; clearTimeout(introTimer);
       document.removeEventListener('keydown', finish); intro.removeEventListener('click', finish);
-      chooseProfile(id);
+      chooseProfile(id); picking = false;
       intro.classList.add('out');
       setTimeout(function () { intro.hidden = true; document.body.style.overflow = ''; }, reduce ? 200 : 450);
     }
@@ -309,6 +317,8 @@
     introTimer = setTimeout(finish, reduce ? 600 : 2450);
   }
   function showPicker() {
+    $('profiles').classList.remove('picked');
+    Array.prototype.forEach.call(document.querySelectorAll('.chosen'), function (e) { e.classList.remove('chosen'); });
     $('app').hidden = true; $('profiles').hidden = false;
     $('profiles').querySelector('button').focus();
   }
