@@ -32,19 +32,37 @@
   ];
   var skillGrads = ['linear-gradient(135deg,#333,#111)', 'linear-gradient(135deg,#3a3a3a,#161616)'];
 
+  var services = [
+    { id: 'seo', title: 'SEO content writing', g: 'linear-gradient(135deg,#e50914,#7a0a10)',
+      desc: 'Articles and web pages written to be found and read. Built on her time as an SEO Content Writer at Zoutons.com.',
+      roles: ['zoutons'], skills: ['Web Content Writing', 'Google Analytics'] },
+    { id: 'copy', title: 'Copywriting', g: 'linear-gradient(135deg,#2f80ed,#0a2f66)',
+      desc: 'Marketing copy for campaigns and ads. Part of her current work as Senior Content Marketer at Masai.',
+      roles: ['masai'], skills: ['Copywriting', 'Advertising'] },
+    { id: 'social', title: 'Social media content', g: 'linear-gradient(135deg,#e08a00,#7a3d00)',
+      desc: 'Content and campaigns for social channels, from her roles at Masai and eWards.',
+      roles: ['masai', 'ewards'], skills: ['Social Media Marketing'] },
+    { id: 'b2b', title: 'B2B and retail marketing', g: 'linear-gradient(135deg,#1f9d6b,#0b3d2c)',
+      desc: 'Marketing strategy and customer communication for business and retail brands, from her time at eWards.',
+      roles: ['ewards'], skills: ['B2B Marketing Strategy', 'Retail Marketing', 'Customer Relationship Management (CRM)'] },
+    { id: 'research', title: 'Research-backed writing', g: 'linear-gradient(135deg,#7b4ae2,#2c1a66)',
+      desc: 'Writing that needs accuracy. She has a science degree and worked with academic journals as a Junior Research Associate.',
+      roles: ['teachief'], skills: ['Research', 'Academic Journals'] }
+  ];
+
   var profiles = [
-    { id: 'recruiter', name: 'Recruiter', sub: 'Skimming fast', color: '#e50914', s: 1,
-      desc: 'Senior Content Marketer at Masai. Five roles across content, SEO, CRM and research, with a science background. Open the skills row for the quick version.',
+    { id: 'recruiter', name: 'Recruiter', sub: 'Skimming fast', color: '#e50914',
+      tag: 'Quick view', playLabel: 'View LinkedIn',
+      desc: 'Senior Content Marketer at Masai. Five roles across content, SEO, CRM and research, with a science background. The skills rows are the quick version.',
       order: ['skills', 'experience', 'education'] },
-    { id: 'manager', name: 'Hiring Manager', sub: 'Going deep', color: '#2f80ed', s: 1,
-      desc: 'Started in biotechnology research, moved into SEO writing, then marketing, and now leads content at Masai. Start with the career journey and open any role for details.',
+    { id: 'manager', name: 'Hiring Manager', sub: 'Hiring for a role', color: '#2f80ed',
+      tag: 'Full story', playLabel: 'Contact on LinkedIn',
+      desc: 'Started in biotechnology research, moved into SEO writing, then marketing, and now leads content at Masai. Open any role in the career journey for details.',
       order: ['experience', 'skills', 'education'] },
-    { id: 'collab', name: 'Collaborator', sub: 'Marketing peer', color: '#f2b705', s: 1,
-      desc: 'A content marketer who has worked on SEO articles, social media, B2B and retail marketing, and CRM. Browse the skills to see where we could work together.',
-      order: ['skills', 'experience', 'education'] },
-    { id: 'guest', name: 'Guest', sub: 'Just browsing', color: '#27ae60', s: 1,
-      desc: 'Pranibha Maheshwari is a content marketer at Masai. Browse her experience, skills and education, or use the search bar to look for something specific.',
-      order: ['experience', 'skills', 'education'] }
+    { id: 'client', name: 'Client', sub: 'One-off project', color: '#f2b705',
+      tag: 'Let\u2019s talk', playLabel: 'Start a project on LinkedIn',
+      desc: 'Need content for a project? Pranibha writes SEO articles, copy, social content and research-backed pieces. See what she can help with, then message her on LinkedIn.',
+      order: ['services', 'experience', 'skills', 'education'] }
   ];
 
   var $ = function (id) { return document.getElementById(id); };
@@ -67,6 +85,10 @@
       var n = rolesFor(item).length;
       if (n) b.innerHTML += '<span class="cs">Used in ' + n + (n === 1 ? ' role' : ' roles') + '</span>';
       b.setAttribute('aria-label', item);
+    } else if (kind === 'svc') {
+      b.className = 'card';
+      b.style.setProperty('--bg-g', item.g);
+      b.innerHTML = '<span class="ct">' + esc(item.title) + '</span><span class="cs">What I can help with</span>';
     } else {
       b.className = 'card';
       b.style.setProperty('--bg-g', item.g);
@@ -93,7 +115,8 @@
       skills: function () {
         skillGroups.forEach(function (g, i) { var r = row(g.name, 'skill', g.list); if (i === 0) r.id = 'skills'; wrap.appendChild(r); });
       },
-      education: function () { wrap.appendChild(row('Education', 'edu', education)); }
+      education: function () { wrap.appendChild(row('Education', 'edu', education)); },
+      services: function () { var r = row('How I can help on your project', 'svc', services); r.id = 'services'; wrap.appendChild(r); }
     };
     profile.order.forEach(function (k) { blocks[k](); });
   }
@@ -102,7 +125,16 @@
   var lastFocus = null;
   function openModal(kind, id) {
     var m = $('modal'), art = $('mArt'), title, meta = '', desc = '', tagsLabel = '', tags = [], btns = '', g;
-    if (kind === 'skill') {
+    if (kind === 'svc') {
+      var sv = services.filter(function (x) { return x.id === id; })[0];
+      g = sv.g; title = sv.title;
+      meta = '<span class="match">What I can help with</span>';
+      desc = sv.desc;
+      tagsLabel = 'Experience behind it';
+      tags = sv.roles.map(function (r) { var e = experience.filter(function (x) { return x.id === r; })[0]; return { label: e.title + ' · ' + e.org, kind: 'exp', id: r }; })
+        .concat(sv.skills.map(function (k) { return { label: k, kind: 'skill', id: k }; }));
+      btns = '<a class="btn play" href="' + LINKEDIN + '" target="_blank" rel="noopener">Discuss this on LinkedIn</a>';
+    } else if (kind === 'skill') {
       var roles = rolesFor(id);
       g = skillGrads[skillIndex(id) % 2]; title = id;
       meta = '<span class="match">Skill</span>';
@@ -180,11 +212,13 @@
     });
   }
   function chooseProfile(id) {
-    var p = profiles.filter(function (x) { return x.id === id; })[0] || profiles[3];
+    var p = profiles.filter(function (x) { return x.id === id; })[0] || profiles[1];
     store.set('profile', p.id);
     $('profiles').hidden = true; $('app').hidden = false;
     $('navFace').style.setProperty('--c', p.color);
     $('heroDesc').textContent = p.desc;
+    $('heroTag').textContent = p.tag;
+    $('heroPlay').lastChild.textContent = ' ' + p.playLabel;
     buildRows(p);
     $('searchInput').value = ''; runSearch('');
     window.scrollTo({ top: 0 });
